@@ -13,6 +13,19 @@ def resize_and_maintain_aspect(image, max_width, max_height):
     return image.resize((new_width, new_height), Image.LANCZOS)
 
 
+if len(sys.argv) < 4:
+    print(
+        "Usage: python script.py <path_to_original_image> <marketing_title> <marketing_tagline1> <marketing_tagline2>"
+    )
+    sys.exit(1)
+
+original_file, marketing_title, marketing_tagline1, marketing_tagline2 = (
+    sys.argv[1],
+    sys.argv[2],
+    sys.argv[3],
+    sys.argv[4],
+)
+
 # Define the dimensions for each device
 device_dimensions = {
     "iPhone_6_7": (1284, 2778),
@@ -22,18 +35,6 @@ device_dimensions = {
     "iPad_Pro_2nd_Gen": (2048, 2732),
 }
 
-if len(sys.argv) < 4:
-    print(
-        "Usage: python script.py <path_to_original_image> <marketing_title> <marketing_tagline>"
-    )
-    sys.exit(1)
-
-original_file, marketing_title, marketing_tagline = (
-    sys.argv[1],
-    sys.argv[2],
-    sys.argv[3],
-)
-
 # Loop through each device and generate the marketing image
 for device, dimensions in device_dimensions.items():
     width, height = dimensions
@@ -41,11 +42,39 @@ for device, dimensions in device_dimensions.items():
     # Create a new canvas with the background color
     canvas = Image.new("RGB", (width, height), "#1f1f1f")
     draw = ImageDraw.Draw(canvas)
-    font = ImageFont.load_default()
 
-    # Add marketing text
-    draw.text((20, 20), marketing_title, font=font, fill=(255, 255, 255))
-    draw.text((20, 70), marketing_tagline, font=font, fill=(255, 255, 255))
+    # Load the Baloo font
+    title_font = ImageFont.truetype("Baloo-Regular.ttf", 125)
+    subtitle_font = ImageFont.truetype("Baloo-Regular.ttf", 60)
+
+    # Center the marketing text
+    title_w, title_h = draw.textsize(marketing_title, font=title_font)
+    title_x = (width - title_w) // 2
+    title_y = (200 - title_h) // 2  # Assuming the header area is 200px high
+
+    subtitle1_w, subtitle1_h = draw.textsize(marketing_tagline1, font=subtitle_font)
+    subtitle1_x = (width - subtitle1_w) // 2
+    subtitle1_y = title_y + title_h + 10  # 10px below the title
+
+    subtitle2_w, subtitle2_h = draw.textsize(marketing_tagline2, font=subtitle_font)
+    subtitle2_x = (width - subtitle2_w) // 2
+    subtitle2_y = subtitle1_y + subtitle1_h + 10  # 10px below the first tagline
+
+    draw.text(
+        (title_x, title_y), marketing_title, font=title_font, fill=(255, 255, 255)
+    )
+    draw.text(
+        (subtitle1_x, subtitle1_y),
+        marketing_tagline1,
+        font=subtitle_font,
+        fill=(255, 255, 255),
+    )
+    draw.text(
+        (subtitle2_x, subtitle2_y),
+        marketing_tagline2,
+        font=subtitle_font,
+        fill=(255, 255, 255),
+    )
 
     # Open the original image and resize it while maintaining aspect ratio
     with Image.open(original_file) as img:
