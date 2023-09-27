@@ -56,8 +56,8 @@ device_dimensions = {
     "iPhone_6_7": (1290, 2796),
     "iPhone_6_5": (1242, 2688),
     "iPhone_5_5": (1242, 2208),
-    "iPad_Pro_6th_Gen": (2048, 2732),
-    "iPad_Pro_2nd_Gen": (2048, 2732),
+    # "iPad_Pro_6th_Gen": (2048, 2732),
+    # "iPad_Pro_2nd_Gen": (2048, 2732),
 }
 
 # Current time in YYYYMMDDHHMMSS format
