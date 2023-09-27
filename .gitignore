@@ -1,2 +1,6 @@
 
 .DS_Store
+
+## Exclude directories (in this case, my own apps - you can change this)
+/CONFETTI_CLOCK_COMPLETE
+/METAL_MAGNET_COMPLETE
