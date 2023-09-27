@@ -6,7 +6,11 @@ If you build native iOS, iPad mobile or desktop applications you know that you n
 
 To run this Python script, you need:
 
-Clone this repo first.
+Clone this repo first 
+
+```bash
+git clone https://github.com/erictherobot/app-icon-generator.git
+```
 
 1. Python 3.x installed
 2. PIL (Pillow) for image manipulation
@@ -65,3 +69,4 @@ MIT
 Eric David Smith
 
 https://ericdavidsmith.com
+
