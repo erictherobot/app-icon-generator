@@ -2,11 +2,13 @@
 
 If you build native iOS, iPad mobile or desktop applications you know that you need to create screenshots for the App Store. This can be a tedious process, especially if you have a lot of screenshots to create. Here's an open source python script I made that has been working great for me. It's easy to use and can save you a lot of time.
 
+Follow the tutorial here: https://ericdavidsmith.com/blog/software/ios-app-store-screenshot-icon-generator-python
+
 ## Prerequisites and Dependencies
 
 To run this Python script, you need:
 
-Clone this repo first 
+Clone this repo first
 
 ```bash
 git clone https://github.com/erictherobot/app-icon-generator.git
@@ -70,3 +72,4 @@ Eric David Smith
 
 https://ericdavidsmith.com
 
+Follow the tutorial here: https://ericdavidsmith.com/blog/software/ios-app-store-screenshot-icon-generator-python
